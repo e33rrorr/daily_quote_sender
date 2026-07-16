@@ -14,10 +14,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: '3.14'
       
       - name: Run script
         env:
           my_email: ${{ secrets.my_email }}
           my_password: ${{ secrets.my_password }}
-        run: python main.py
+        run: python sender.py
