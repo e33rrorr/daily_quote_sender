@@ -11,7 +11,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: '3.14'
       
       - name: Check secrets are configured
         env:
@@ -36,7 +36,7 @@ jobs:
           echo "All secrets are configured!"
       
       - name: Test Python syntax
-        run: python -m py_compile main.py && echo "Python syntax OK"
+        run: python -m py_compile sender.py && echo "Python syntax OK"
       
       - name: Success
         run: |
