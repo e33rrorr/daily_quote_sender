@@ -1,0 +1,47 @@
+name: Test Setup
+on:
+  workflow_dispatch:  # Manual trigger only
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Check secrets are configured
+        env:
+          my_email: ${{ secrets.my_email }}
+          my_password: ${{ secrets.my_password }}
+        run: |
+          if [ -z "$my_email" ]; then
+            echo "my_email secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "my_email is configured"
+          fi
+          if [ -z "$my_password" ]; then
+            echo "my_password secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "my_password is configured"
+          fi
+          echo ""
+          echo "All secrets are configured!"
+      
+      - name: Test Python syntax
+        run: python -m py_compile main.py && echo "Python syntax OK"
+      
+      - name: Success
+        run: |
+          echo ""
+          echo "========================================"
+          echo "  All checks passed!"
+          echo "  Your setup is ready to go."
+          echo "========================================"
