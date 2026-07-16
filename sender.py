@@ -1,5 +1,6 @@
 import smtplib
 import os
+import random
 
 my_email = os.environ.get("my_email")
 my_password = os.environ.get("my_password")
@@ -15,7 +16,7 @@ def send_email():
         connection.sendmail(
             from_addr=my_email,
             to_addrs=recipients,
-            msg=f"Subject: Daily Quote\n\n{quotes[0]}"
+            msg=f"Subject: Daily Quote\n\n{random.choice(quotes)}"
         ) 
 
 
