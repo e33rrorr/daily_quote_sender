@@ -4,7 +4,7 @@ import random
 
 my_email = os.environ.get("my_email")
 my_password = os.environ.get("my_password")
-recipients = "e33rrorr@gmail.com"
+recipients = "gulalkaya@hotmail.co.uk"
 
 
 def send_email():
