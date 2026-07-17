@@ -1,7 +1,7 @@
 name: Daily Script
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 09 * * *'
   workflow_dispatch:
 
 jobs:
